@@ -1,0 +1,10 @@
+{
+    "extends": "airbnb",
+    "rules": {
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-indent": [1, 4],
+        "indent": [1, 4],
+        "object-curly-spacing": [0, "always"],
+        "react/jsx-tag-spacing": [0, "always"]
+    }
+}
