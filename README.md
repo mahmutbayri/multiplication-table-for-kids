@@ -1,5 +1,11 @@
 # Multiplication table application for kids
 
+| Branch | Status |
+|--------|--------|
+|   Develop     |   [![Build Status](https://travis-ci.org/mahmutbayri/multiplication-table-for-kids.svg?branch=develop)](https://travis-ci.org/mahmutbayri/multiplication-table-for-kids)    |
+|   Master     |   [![Build Status](https://travis-ci.org/mahmutbayri/multiplication-table-for-kids.svg?branch=master)](https://travis-ci.org/mahmutbayri/multiplication-table-for-kids) |
+
+
 ## Installation
 
     mkdir multiplication-table-for-kids
