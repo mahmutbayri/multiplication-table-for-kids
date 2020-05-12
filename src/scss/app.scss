@@ -1,13 +1,139 @@
+html{
+  font-size: 20px;
+}
 body {
-  background-color: #fefefe;
+  background-color: #f8f9fa!important;
+}
+.container-sm{
+  max-width: 800px;
+}
+*:focus {outline: none !important; box-shadow: none  !important;}
+.bg-purple {
+  background-color: #6f42c1;
+}
+.answer-choices-box input{
+  /*display: none;*/
+}
+input[type="radio"] + label{
+  cursor: pointer;
+}
+input[type="radio"]:checked+label{
+  background: #ff9800;
+  color: #fff;
+}
+.count-down-box{
+  width: 240px;
+  padding: 10px;
+}
+.count-down-box .badge{
+  min-width: 80px;
+  line-height: 30px;
+}
+.quiz-start-icon {
+  width: 100px;
+  height: 100px;
+  display: block;
+}
+.scoreboard-list-item:last-child{border: none !important;}
+
+.students-test-panel, .logout-btn{
+  /*display: none;*/
+}
+.isLogin .score-list-container, .isLogin .login-btn{
+  /*display: none;*/
+}
+.isLogin .students-test-panel, .isLogin .logout-btn{
+  display: block;
+}
+
+.quiz-main-box{
+  font-size: 70px;
+  font-weight: bold;
+}
+.quiz-main-box input{
+  width: 160px;
+  line-height: 70px;
+  border-radius: 20px;
+  border: solid 4px #353b41;
+  font-size: 70px;
+  font-weight: bold;
+  padding: 10px 20px;
   text-align: center;
-  .navbar {
-    background: #21374B;
-    color: #E7DACB;
-    height: 50px;
+  color: #353b41;
+}
+
+@media (max-width: 992px){
+  html{
+    font-size: 16px;
   }
-  h1 {
-    font-size: 40px;
-    margin-top: 30px;
+  .quiz-main-box{
+    font-size: 50px;
+    font-weight: bold;
+  }
+  .quiz-main-box input{
+    width: 120px;
+    line-height: 50px;
+    font-size:40px;
   }
 }
+
+
+@keyframes flipInX {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
+
+.flipInX {
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  -webkit-animation-name: flipInX;
+  animation-name: flipInX;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.userHistoryBtn{
+  display: block; text-align: right; font-size: 14px; color: #ccc; margin: 5px 0 0; text-decoration: underline; cursor: pointer;
+}
+.historyTable{ font-size: 12px;}
+.historyTable .thead-dark th{color: #222; background-color: #ffc106; border-color: #ffc106;}
+.historyTable tbody td{ text-align: center;}
+
+
+
+/*.modal-backdrop {*/
+/*    display:none*/
+/*}*/
+/*.modal-backdrop.in {*/
+/*    opacity: 0;*/
+/*}*/
