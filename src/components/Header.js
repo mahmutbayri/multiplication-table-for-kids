@@ -11,11 +11,11 @@ class Header extends Component {
                         <small>Test your knowledge</small>
                     </div>
                 </div>
-                <button className="btn btn-light login-btn" data-toggle="modal" data-target="#loginModal">
+                <button type="button" className="btn btn-light login-btn" data-toggle="modal" data-target="#loginModal">
                     <img src="https://image.flaticon.com/icons/svg/1000/1000997.svg" width="30" height="30" alt=""/>
                     Giriş yap
                 </button>
-                <button className="btn btn-warning logout-btn">
+                <button type="button" className="btn btn-warning logout-btn">
                     <img src="https://image.flaticon.com/icons/svg/1000/1000997.svg" width="30" height="30" alt=""/>
                     Çıkış yap
                 </button>
