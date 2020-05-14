@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
 
 class Header extends Component {
     render() {
+        const {isLogin, onLogin, onLogout} = this.props;
         return (
             <div className="d-flex align-items-center justify-content-between p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
                 <div className="d-flex align-items-center ">
@@ -11,18 +13,39 @@ class Header extends Component {
                         <small>Test your knowledge</small>
                     </div>
                 </div>
-                <button type="button" className="btn btn-light login-btn" data-toggle="modal" data-target="#loginModal">
-                    <img src="https://image.flaticon.com/icons/svg/1000/1000997.svg" width="30" height="30" alt=""/>
-                    Giriş yap
-                </button>
-                <button type="button" className="btn btn-warning logout-btn">
-                    <img src="https://image.flaticon.com/icons/svg/1000/1000997.svg" width="30" height="30" alt=""/>
-                    Çıkış yap
-                </button>
-            </div>
 
+                {
+                    isLogin
+                        ? <button type="button" className="btn btn-warning logout-btn" onClick={onLogout}>
+                            <img src="https://image.flaticon.com/icons/svg/1000/1000997.svg" width="30" height="30" alt=""/>
+                            Çıkış yap
+                        </button>
+                        : <button type="button" className="btn btn-light login-btn" onClick={onLogin}>
+                            <img src="https://image.flaticon.com/icons/svg/1000/1000997.svg" width="30" height="30" alt=""/>
+                            Giriş yap
+                        </button>
+                }
+            </div>
         );
     }
 }
 
-export default Header;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onLogin: () => {
+            dispatch({type: 'SHOW_LOGIN_FORM'})
+        },
+        onLogout: () => {
+            dispatch({type: 'USER_LOGOUT'})
+        },
+    }
+}
+
+const mapStateToProps =  (state) => {
+    return {
+        isLogin: state.currentStudentsData
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
+

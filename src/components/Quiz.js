@@ -42,7 +42,7 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         onClick: () => {
             dispatch({type: 'START_QUIZ'})

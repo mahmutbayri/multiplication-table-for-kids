@@ -9,17 +9,37 @@ const reducer = function (state, action) {
         return Object.assign({}, state, {quizStarted: true});
     }
 
+    if (action.type === 'SHOW_LOGIN_FORM') {
+        return Object.assign({}, state, {
+            loginForm: true
+        });
+    }
+
+    if (action.type === 'USER_LOGOUT') {
+        return Object.assign({}, state, {
+            currentStudentsData: null,
+        });
+    }
+
+    if (action.type === 'LOGIN_USER') {
+        return Object.assign({}, state, {
+            currentStudentsData: action.payload,
+            loginForm: false
+        });
+    }
+
     return state;
 };
 
 const initial = {
-    // currentStudentsData: null,
-    currentStudentsData: {
-        userId: 1,
-        userName: 'Hasan2',
-        userScore: 0,
-    },
+    currentStudentsData: null,
+    // currentStudentsData: {
+    //     userId: 1,
+    //     userName: 'Hasan2',
+    //     userScore: 0,
+    // },
     quizStarted: false,
+    loginForm: false,
     students: [
         {
             userId: 1,
@@ -30,7 +50,7 @@ const initial = {
         {
             userId: 2,
             userName: 'Onur',
-            userPassword: '2468',
+            userPassword: '1111',
             userScore: 0,
         },
         {
