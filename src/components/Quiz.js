@@ -8,19 +8,23 @@ class Quiz extends Component {
     render() {
 
         const {quizStarted, onClick, questionLimit, finishQuiz} = this.props;
-        const nextQuestion = this.nextOrFinish();
 
-        if(!nextQuestion) {
-            finishQuiz();
-            return <div>quez bitti</div>
+        let nextQuestion = null;
+
+        if(quizStarted) {
+            nextQuestion = this.nextOrFinish();
+            if(!nextQuestion) {
+                finishQuiz();
+                return <div>quez bitti</div>
+            }
         }
+
         return (
             <div className="my-3 p-3 bg-white rounded shadow-sm position-relative students-test-panel flipInX">
                 <div className="quiz-container">
                     <div className="quiz-heading">
                         <QuizHeader/>
                     </div>
-
                     <div className="d-flex flex-column align-items-center justify-content-center mt-4">
                         <h4 className="alert alert-success count-down-box ">
                             <small className="mr-1">Quiz Time</small>
