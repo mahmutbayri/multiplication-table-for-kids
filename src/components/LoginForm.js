@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Modal, Button} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import {connect} from "react-redux";
 
 class LoginForm extends Component {
@@ -13,10 +14,10 @@ class LoginForm extends Component {
         };
     }
 
-
     handleClose() {
-        //validate
-        // dispath
+        this.props.dispatch({
+            type: 'HIDE_LOGIN_FORM',
+        });
     }
 
     onChangeUserName(event) {
@@ -56,11 +57,10 @@ class LoginForm extends Component {
     }
 
     render() {
-
         const {onClick} = this.props;
 
         return (
-            <Modal show={true} onHide={this.handleClose}>
+            <Modal show={true} onHide={this.handleClose.bind(this)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Giriş Yap</Modal.Title>
                 </Modal.Header>

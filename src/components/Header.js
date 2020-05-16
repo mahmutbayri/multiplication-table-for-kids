@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 
 class Header extends Component {
     render() {
-        const {isLogin, onLogin, onLogout} = this.props;
         return (
             <div className="d-flex align-items-center justify-content-between p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
                 <div className="d-flex align-items-center ">
@@ -13,20 +12,23 @@ class Header extends Component {
                         <small>Test your knowledge</small>
                     </div>
                 </div>
-
-                {
-                    isLogin
-                        ? <button type="button" className="btn btn-warning logout-btn" onClick={onLogout}>
-                            <img src="https://image.flaticon.com/icons/svg/1000/1000997.svg" width="30" height="30" alt=""/>
-                            Çıkış yap
-                        </button>
-                        : <button type="button" className="btn btn-light login-btn" onClick={onLogin}>
-                            <img src="https://image.flaticon.com/icons/svg/1000/1000997.svg" width="30" height="30" alt=""/>
-                            Giriş yap
-                        </button>
-                }
+                {this.renderButton()}
             </div>
         );
+    }
+
+    renderButton() {
+        const {isLogin, onLogin, onLogout} = this.props;
+        if (isLogin) {
+            return <button type="button" className="btn btn-warning logout-btn" onClick={onLogout}>
+                <img src="https://image.flaticon.com/icons/svg/1000/1000997.svg" width="30" height="30" alt=""/>
+                Çıkış yap
+            </button>;
+        }
+        return <button type="button" className="btn btn-light login-btn" onClick={onLogin}>
+            <img src="https://image.flaticon.com/icons/svg/1000/1000997.svg" width="30" height="30" alt=""/>
+            Giriş yap
+        </button>
     }
 }
 
@@ -41,7 +43,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const mapStateToProps =  (state) => {
+const mapStateToProps = (state) => {
     return {
         isLogin: state.currentStudentsData
     }
