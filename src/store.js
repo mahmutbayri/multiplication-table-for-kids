@@ -1,5 +1,6 @@
-import {createStore} from 'redux';
+import {createStore, compose, applyMiddleware} from 'redux';
 import {questionGenerator} from './helpers'
+import finishOrNext from './middleware/finishOrNext'
 
 const reducer = function (state, action) {
     if (action.type === 'GOSTER') {
@@ -11,6 +12,7 @@ const reducer = function (state, action) {
             quizStarted: true,
             questions: action.questions,
             currentQuizQuestionIndex: 0,
+            nextQuestion: action.questions[0]
         });
     }
 
@@ -21,8 +23,15 @@ const reducer = function (state, action) {
     }
 
     if (action.type === 'SET_NEXT_QUESTION') {
+        let nextIndex = state.currentQuizQuestionIndex + 1;
+        let nextQuestion = null;
+        if(nextIndex < state.questionLimit) {
+            nextQuestion = state.questions[nextIndex];
+        }
+
         return Object.assign({}, state, {
             currentQuizQuestionIndex: state.currentQuizQuestionIndex + 1,
+            nextQuestion: nextQuestion,
             currentStudentsData: {
                 ...state.currentStudentsData,
                 userScore: state.currentStudentsData.userScore + action.payload.winPoint
@@ -32,6 +41,8 @@ const reducer = function (state, action) {
 
     if (action.type === 'FINISH_QUIZ') {
         let currentStudent = state.currentStudentsData;
+        // son puanı
+        currentStudent.userScore += action.payload.winPoint;
         let studentsData = state.students.map(item => {
             if(currentStudent.userName !== item.userName) {
                 return item;
@@ -107,14 +118,19 @@ const initial = {
         }
     ],
     questions: [],
+    nextQuestion: null,
     quizQuestions: [], //!!!! iptal
     questionLimit: 3,
     currentQuizQuestionIndex: 0
 
 }
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 export default createStore(
     reducer,
     initial,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeEnhancers(
+        applyMiddleware(finishOrNext)
+    )
 );
