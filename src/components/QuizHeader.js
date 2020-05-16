@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 class QuizHeader extends Component {
     render() {
@@ -28,10 +29,16 @@ class QuizHeader extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        user: state.currentStudentsData,
-    }
+QuizHeader.propTypes = {
+    user: PropTypes.shape({
+        userId: PropTypes.number,
+        userName: PropTypes.string,
+        userScore: PropTypes.number,
+    }).isRequired,
 };
+
+const mapStateToProps = (state) => ({
+    user: state.currentStudentsData,
+});
 
 export default connect(mapStateToProps)(QuizHeader);

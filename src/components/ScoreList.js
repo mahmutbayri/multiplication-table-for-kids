@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import ScoreListItem from './ScoreListItem';
-import {connect} from "react-redux";
 
 class ScoreList extends Component {
     render() {
-
-        const students = this.props.students;
-
+        const {students} = this.props;
         return (
             <div className="my-3 p-3 bg-white rounded shadow-sm position-relative score-list-container flipInX">
                 <h4 className="pb-2 mb-3 question-title">Skor Listesi</h4>
@@ -18,14 +17,23 @@ class ScoreList extends Component {
     }
 }
 
-
-let mapStateToProps = function (state) {
-    return {
-        students: state.students,
-    }
+ScoreList.propTypes = {
+    students: PropTypes.arrayOf(
+        PropTypes.shape({
+            userId: PropTypes.number,
+            userName: PropTypes.string,
+            userPassword: PropTypes.string,
+            userScore: PropTypes.number,
+        }),
+    ).isRequired,
 };
+
+
+const mapStateToProps = (state) => ({
+    students: state.students,
+});
+
 
 export default connect(
     mapStateToProps,
-)(ScoreList)
-
+)(ScoreList);

@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import ScoreList from './ScoreList';
 import Quiz from './Quiz';
-import {connect} from "react-redux";
-import LoginForm from "./LoginForm";
+import LoginForm from './LoginForm';
 
 class App extends Component {
     render() {
@@ -18,16 +19,20 @@ class App extends Component {
     }
 }
 
-let mapStateToProps = function (state, ownProps) {
-    return {
-        currentStudentsData: state.currentStudentsData,
-        loginForm: state.loginForm,
-    }
+App.propTypes = {
+    loginForm: PropTypes.bool.isRequired,
+    currentStudentsData: PropTypes.shape({
+        userId: PropTypes.number,
+        userName: PropTypes.string,
+        userScore: PropTypes.number,
+    }).isRequired,
 };
+
+const mapStateToProps = (state) => ({
+    currentStudentsData: state.currentStudentsData,
+    loginForm: state.loginForm,
+});
 
 export default connect(
     mapStateToProps,
-)(App)
-
-
-
+)(App);
