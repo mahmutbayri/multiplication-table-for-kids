@@ -26,7 +26,11 @@ class ScoreListItem extends Component {
 }
 
 ScoreListItem.propTypes = {
-    user: PropTypes.isRequired,
+    user: PropTypes.shape({
+        userId: PropTypes.number,
+        userName: PropTypes.string,
+        userScore: PropTypes.number
+    }),
 };
 
 export default ScoreListItem;
