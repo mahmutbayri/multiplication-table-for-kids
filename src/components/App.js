@@ -28,7 +28,7 @@ App.propTypes = {
             userScore: PropTypes.number,
         }),
         PropTypes.oneOf([null]).isRequired,
-    ]),
+    ]).isRequired,
 };
 
 const mapStateToProps = (state) => ({

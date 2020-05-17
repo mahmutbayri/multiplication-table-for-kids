@@ -45,7 +45,7 @@ Quiz.propTypes = {
             result: PropTypes.number,
         }),
         PropTypes.oneOf([null]),
-    ]),
+    ]).isRequired,
     questionLimit: PropTypes.number.isRequired,
     onTimerEnd: PropTypes.func.isRequired,
     onClick: PropTypes.func.isRequired,
