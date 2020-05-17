@@ -21,11 +21,14 @@ class App extends Component {
 
 App.propTypes = {
     loginForm: PropTypes.bool.isRequired,
-    currentStudentsData: PropTypes.shape({
-        userId: PropTypes.number,
-        userName: PropTypes.string,
-        userScore: PropTypes.number,
-    }).isRequired,
+    currentStudentsData: PropTypes.oneOfType([
+        PropTypes.shape({
+            userId: PropTypes.number,
+            userName: PropTypes.string,
+            userScore: PropTypes.number,
+        }),
+        PropTypes.oneOf([null]).isRequired,
+    ]),
 };
 
 const mapStateToProps = (state) => ({

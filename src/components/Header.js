@@ -38,7 +38,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    isLogin: PropTypes.func.isRequired,
+    isLogin: PropTypes.bool.isRequired,
     onLogin: PropTypes.func.isRequired,
     onLogout: PropTypes.func.isRequired,
 };
@@ -53,7 +53,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-    isLogin: state.currentStudentsData,
+    isLogin: !!state.currentStudentsData,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
