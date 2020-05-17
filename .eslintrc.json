@@ -4,8 +4,12 @@
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/jsx-indent": [1, 4],
         "indent": [1, 4],
+        "react/jsx-indent-props": [1, 4],
         "object-curly-spacing": [0, "always"],
         "react/jsx-tag-spacing": [0, "always"],
-        "react/prefer-stateless-function": [0]
+        "react/prefer-stateless-function": [0],
+        "react/jsx-no-bind": [0],
+        "jsx-a11y/label-has-associated-control": [0],
+        "max-len": ["error", { "code": 210, "tabWidth": 4}]
     }
 }
