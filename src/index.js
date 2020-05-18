@@ -1,19 +1,17 @@
-import './scss/app.scss'
-import React from "react";
-import ReactDOM from "react-dom";
+import './scss/app.scss';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
 import store from './store';
-import {Provider} from 'react-redux'
 import App from './components/App';
 
-let root = document.getElementById("app");
+const root = global.document.getElementById('app');
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
-    </Provider>
-    , root
+        <App/>
+    </Provider>,
+    root,
 );
 
-window.store = store;
-
-
+global.store = store;

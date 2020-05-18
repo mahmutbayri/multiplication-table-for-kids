@@ -26,9 +26,9 @@ App.propTypes = {
             userId: PropTypes.number,
             userName: PropTypes.string,
             userScore: PropTypes.number,
-        }),
+        }).isRequired,
         PropTypes.oneOf([null]).isRequired,
-    ]).isRequired,
+    ]),
 };
 
 const mapStateToProps = (state) => ({

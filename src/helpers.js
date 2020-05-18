@@ -4,8 +4,8 @@ export function questionGenerator() {
     return {
         firstNumber,
         secondNumber,
-        result: firstNumber * secondNumber
-    }
+        result: firstNumber * secondNumber,
+    };
 }
 
 /**
@@ -13,12 +13,11 @@ export function questionGenerator() {
  * @param timeAsSeconds integer
  */
 export function formatTime(timeAsSeconds) {
-
     let minutes = parseInt(timeAsSeconds / 60, 10);
     let seconds = parseInt(timeAsSeconds % 60, 10);
 
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
+    minutes = minutes < 10 ? `0${minutes}` : minutes;
+    seconds = seconds < 10 ? `0${seconds}` : seconds;
 
-    return minutes + ":" + seconds;
+    return `${minutes}:${seconds}`;
 }
