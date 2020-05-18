@@ -17,7 +17,7 @@
 
 To start the project run this code below
 
-    npm start
+    npm run start
 
 After starting the project you can navigate http://localhost:1234 address on your browser. 
 
