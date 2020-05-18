@@ -1,0 +1,12 @@
+service: multiplication-table-for-kids
+plugins:
+  - serverless-finch
+custom:
+  client:
+    bucketName: multiplication-table-for-kids-2
+    distributionFolder: dist
+provider:
+  name: aws
+  region: us-east-1
+  stage: dev
+#  profile: serverless-admin
